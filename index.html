@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Animation</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .section { height: 100vh; display: flex; justify-content: center; align-items: center; font-size: 2em; }
+    .section:nth-child(odd) { background-color: #f4f4f4; }
+    .section:nth-child(even) { background-color: #ddd; }
+    .animate { opacity: 0; transform: translateY(50px); }
+  </style>
+</head>
+<body>
+  <section class="section">
+    <div class="animate">Section 1</div>
+  </section>
+  <section class="section">
+    <div class="animate">Section 2</div>
+  </section>
+  <section class="section">
+    <div class="animate">Section 3</div>
+  </section>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray('.animate').forEach(section => {
+      gsap.from(section, {
+        opacity: 0,
+        y: 50,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          end: "top 50%",
+          scrub: true
+        }
+      });
+    });
+  </script>
+</body>
+</html>
