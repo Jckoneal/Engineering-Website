@@ -3,75 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jack O'Neal's Engineering Portfolio</title>
-  <style>
-    body { 
-      font-family: Arial, sans-serif; 
-      margin: 0; 
-      padding: 0; 
-      scroll-behavior: smooth;
-    }
-    h1 {
-      text-align: center;
-      font-size: 3em;
-      margin-top: 50px;
-    }
-    .section { 
-      height: 100vh; 
-      display: flex; 
-      justify-content: center; 
-      align-items: center; 
-      font-size: 2em; 
-      padding: 20px;
-    }
-    .section:nth-child(odd) { 
-      background-color: #f4f4f4; 
-    }
-    .section:nth-child(even) { 
-      background-color: #ddd; 
-    }
-    .animate { 
-      opacity: 0; 
-      transform: translateY(50px); 
-    }
-  </style>
+  <title>Scrolling Background with Tiles</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Jack O'Neal's Engineering Portfolio</h1>
-  
-  <section class="section">
-    <div class="animate">Section 1: Introduction</div>
-  </section>
-  
-  <section class="section">
-    <div class="animate">Section 2: Projects</div>
-  </section>
-  
-  <section class="section">
-    <div class="animate">Section 3: Skills & Tools</div>
-  </section>
-  
-  <section class="section">
-    <div class="animate">Section 4: Contact</div>
-  </section>
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-  <script>
-    gsap.registerPlugin(ScrollTrigger);
+  <div class="background-animation">
+    <div class="overlay">
+      <h1>Scrolling Background Animation</h1>
+      <p>Some cool text goes here that stays on top of the scrolling background.</p>
+    </div>
+  </div>
 
-    gsap.utils.toArray('.animate').forEach(section => {
-      gsap.from(section, {
-        opacity: 0,
-        y: 50,
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-          end: "top 50%",
-          scrub: true
-        }
-      });
-    });
-  </script>
+  <div class="tiles">
+    <div class="tile"><a href="CADPage.html">CAD page</a></div>
+    <div class="tile"><a href="page2.html">Page 2</a></div>
+    <div class="tile"><a href="page3.html">Page 3</a></div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

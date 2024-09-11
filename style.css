@@ -1,0 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+  }
+  
+  .background-animation {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url('SkateboardRender.png'); /* Replace with your background image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* For a parallax scrolling effect */
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    z-index: 10; /* Keeps text on top */
+  }
+  
+  .overlay h1 {
+    font-size: 4rem;
+  }
+  
+  .overlay p {
+    font-size: 1.5rem;
+  }
+  
+  .tiles {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #f0f0f0;
+  }
+  
+  .tile {
+    margin: 0 10px;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .tile a {
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .tile:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
