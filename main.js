@@ -46,6 +46,19 @@ function addStar() {
 
 Array(2000).fill().forEach(addStar)
 
+function addNearStar() {
+  const geometry = new THREE.SphereGeometry(0.25, 24, 24);
+  const material = new THREE.MeshStandardMaterial( { color: 0xffffff } );
+  const nearStar = new THREE.Mesh( geometry, material );
+
+  const [x , y , z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 100 ) );
+
+  nearStar.position.set(x,y,z);
+  scene.add(nearStar)
+}
+Array(20).fill().forEach(addNearStar)
+Array(2000).fill().forEach(addStar)
+
 const controls = new OrbitControls(camera, renderer.domElement);
 scene.add(controls)
 
