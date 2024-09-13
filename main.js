@@ -44,11 +44,33 @@ function addStar() {
   scene.add(star)
 }
 
-Array(100).fill().forEach(addStar)
+Array(200).fill().forEach(addStar)
 
 const controls = new OrbitControls(camera, renderer.domElement);
 scene.add(controls)
 
+// const spaceTexture = new THREE.TextureLoader().load('space.jpg');
+// scene.background = spaceTexture;
+
+const jackTexture = new THREE.TextureLoader().load('jack.jpg')
+
+const jack = new THREE.Mesh(
+  new THREE.BoxGeometry(3, 3, 3),
+  new THREE.MeshBasicMaterial( { map: jackTexture } )
+);
+scene.add(jack)
+
+const moonTexture = new THREE.TextureLoader().load('moon.jpg');
+const normalTexture = new THREE.TextureLoader().load('normal.jpg')
+
+const moon = new THREE.Mesh(
+  new THREE.SphereGeometry(3, 32, 32), 
+  new THREE.MeshStandardMaterial( { 
+    map: moonTexture, 
+    normalMap: normalTexture
+  } )
+);
+scene.add(moon)
 
 function animate() {
 
