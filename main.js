@@ -18,7 +18,7 @@ camera.position.setZ(30);
 
 renderer.render( scene, camera);
 
-const geometry = new THREE.TorusGeometry(10, 3, 16, 10)
+const geometry = new THREE.TorusGeometry(10, 3, 16, 100)
 const material = new THREE.MeshStandardMaterial( { color: 0xFF6347 } )
 const torus = new THREE.Mesh( geometry, material );
 
@@ -36,14 +36,15 @@ scene.add(lightHelper, gridHelper)
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
   const material = new THREE.MeshStandardMaterial( { color: 0xffffff } );
+  const star = new THREE.Mesh( geometry, material );
 
   const [x , y , z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 100 ) );
 
-  StaticRange.position.set(x,y,x);
+  star.position.set(x,y,z);
   scene.add(star)
 }
 
-Array(1).fill().forEach(addStar)
+Array(100).fill().forEach(addStar)
 
 const controls = new OrbitControls(camera, renderer.domElement);
 scene.add(controls)
