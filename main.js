@@ -1,5 +1,6 @@
 import './style.css'
 import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 const scene = new THREE.Scene();
 
@@ -17,13 +18,45 @@ camera.position.setZ(30);
 
 renderer.render( scene, camera);
 
-const geometry = new THREE.TorusGeometry(10, 3, 16, 100)
-const material = new THREE.MeshBasicMaterial( { color: 0xFF0000, wireframe: true } )
+const geometry = new THREE.TorusGeometry(10, 3, 16, 10)
+const material = new THREE.MeshStandardMaterial( { color: 0xFF6347 } )
 const torus = new THREE.Mesh( geometry, material );
 
 scene.add(torus)
 
+const pointLight = new THREE.PointLight(0xffffff);
+pointLight.position.set(10,0,0);
+const ambientLight = new THREE.AmbientLight(0xffffff);
+scene.add(pointLight, ambientLight);
+
+const lightHelper = new THREE.PointLightHelper(pointLight);
+const gridHelper = new THREE.GridHelper();
+scene.add(lightHelper, gridHelper)
+
+function addStar() {
+  const geometry = new THREE.SphereGeometry(0.25, 0, 0);
+  const material = new THREE.MeshStandardMaterial( { color: 0xffffff } );
+
+  const [x , y , z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 100 ) );
+
+  StaticRange.position.set(x,y,x);
+  scene.add(star)
+}
+
+Array(200).fill().forEach(addStar)
+
+const controls = new OrbitControls(camera, renderer.domElement);
+scene.add(controls)
+
+
 function animate() {
+
+  torus.rotation.x += 0.01;
+  torus.rotation.y += 0.005;
+  torus.rotation.z += 0.01;
+
+  controls.update();
+
   requestAnimationFrame( animate );
   renderer.render( scene, camera );
 }
