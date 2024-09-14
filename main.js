@@ -50,8 +50,8 @@ renderer.render( scene, camera);
 // scene.add(torus);
 
 const pointLight = new THREE.PointLight(0xffffff, 1, 0, 0.01);
-pointLight.position.set(5,0,0);
-const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+pointLight.position.set(15,10,1);
+const ambientLight = new THREE.AmbientLight(0xffffff, 2);
 scene.add(pointLight, ambientLight);
 
 const lightHelper = new THREE.PointLightHelper(pointLight);
