@@ -51,7 +51,7 @@ renderer.render( scene, camera);
 
 const pointLight = new THREE.PointLight(0xffffff, 1, 0, 0.01);
 pointLight.position.set(5,0,0);
-const ambientLight = new THREE.AmbientLight(0xffffff);
+const ambientLight = new THREE.AmbientLight(0xffffff, 2);
 scene.add(pointLight, ambientLight);
 
 const lightHelper = new THREE.PointLightHelper(pointLight);
@@ -87,7 +87,7 @@ Array(2000).fill().forEach(addStar)
 const controls = new OrbitControls(camera, renderer.domElement);
 scene.add(controls)
 
-const jackTexture = new THREE.TextureLoader().load('jack.jpg')
+const jackTexture = new THREE.TextureLoader().load('./jack.jpg')
 
 const jack = new THREE.Mesh(
   new THREE.BoxGeometry(3, 3, 3),
@@ -95,8 +95,8 @@ const jack = new THREE.Mesh(
 );
 scene.add(jack)
 
-const moonTexture = new THREE.TextureLoader().load('moon.jpg');
-const normalTexture = new THREE.TextureLoader().load('normal.jpg')
+const moonTexture = new THREE.TextureLoader().load('./moon.jpg');
+const normalTexture = new THREE.TextureLoader().load('./normal.jpg')
 
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32), 
