@@ -51,7 +51,7 @@ renderer.render( scene, camera);
 
 const pointLight = new THREE.PointLight(0xffffff, 1, 0, 0.01);
 pointLight.position.set(5,0,0);
-const ambientLight = new THREE.AmbientLight(0xffffff, 2);
+const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(pointLight, ambientLight);
 
 const lightHelper = new THREE.PointLightHelper(pointLight);
