@@ -7,29 +7,6 @@ const scene = new THREE.Scene();
 
 const loader = new GLTFLoader();
 
-const skateboard = loader.load(
-  '/Skateboard/Skateboard.glb',
-  function (gltf) {
-    scene.add(gltf.scene);
-
-    gltf.animations;
-    gltf.scene;
-    gltf.scenes;
-    gltf.cameras;
-    gltf.asset;
-  },
-
-	function ( xhr ) {
-
-		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-
-	},
-	function ( error ) {
-
-		console.log( 'An error happened' );
-
-	}
-)
 
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
@@ -49,20 +26,46 @@ renderer.render( scene, camera);
 // const torus = new THREE.Mesh( geometry, material );
 // scene.add(torus);
 
+let loadedSkateboard;
+
+loader.load(
+  '/Skateboard/Skateboard.glb',
+  function (gltf) {
+
+    loadedSkateboard = gltf
+
+    const skateboard = gltf.scene;
+
+    skateboard.position.set(0, -10, 1)
+
+    scene.add(skateboard);
+
+  },
+
+  function ( xhr ) {
+
+    console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+
+  }
+);
+
+
+
 const pointLight = new THREE.PointLight(0xffffff, 1, 0, 0.01);
 pointLight.position.set(15,10,1);
 const ambientLight = new THREE.AmbientLight(0xffffff, 2);
 scene.add(pointLight, ambientLight);
 
 const lightHelper = new THREE.PointLightHelper(pointLight);
-const gridHelper = new THREE.GridHelper();
-scene.add(lightHelper, gridHelper)
+scene.add(lightHelper)
+
+// const gridHelper = new THREE.GridHelper();
+// scene.add(gridHelper)
 
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
   const material = new THREE.MeshStandardMaterial( { color: 0xffffff } );
-  const star = new THREE.Mesh( geometry, material );
-
+  const star = new THREE.Mesh( geometry, material ); 
   const [x , y , z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 1000 ) );
 
   star.position.set(x,y,z);
@@ -82,18 +85,21 @@ function addNearStar() {
   scene.add(nearStar)
 }
 Array(20).fill().forEach(addNearStar)
-Array(2000).fill().forEach(addStar)
 
 const controls = new OrbitControls(camera, renderer.domElement);
 scene.add(controls)
 
-const jackTexture = new THREE.TextureLoader().load('./jack.jpg')
+const jackTexture = new THREE.TextureLoader().load('./Jack.jpg')
 
 const jack = new THREE.Mesh(
   new THREE.BoxGeometry(3, 3, 3),
   new THREE.MeshBasicMaterial( { map: jackTexture } )
 );
 scene.add(jack)
+
+jack.position.x = 3; 
+jack.position.y = 0; 
+jack.position.z = -5;
 
 const moonTexture = new THREE.TextureLoader().load('./moon.jpg');
 const normalTexture = new THREE.TextureLoader().load('./normal.jpg')
@@ -107,22 +113,37 @@ const moon = new THREE.Mesh(
 );
 moon.position.set(15,10,1)
 scene.add(moon)
-function moveCamera() {
-  const t = document.body.getboundingClientRect().top;
-  moon.rotate.x += 0.05;
-  moon.rotate.y += 0.075;
-  moon.rotate.z +=0.05;
-  
-  jack.rotate.x += 0.02;
-  jack.rotate.y += 0.01;
-  jack.rotate.z += 0.02;
 
-  camera.position.z = t * -0.01;
-  camera.position.x = t * -0.0002;
-  camera.position.y = t * -0.0002; 
+// Set camera at 0
+
+camera.position.z = 1;
+camera.position.x;
+camera.position.y; 
+
+
+function moveCamera() {
+  const t = document.body.scrollTop || document.documentElement.scrollTop || window.scrollY;
+
+
+  moon.rotation.x += 0.05;
+  moon.rotation.y += 0.075;
+  moon.rotation.z +=0.05;
+  
+  jack.rotation.x += 0.02;
+  jack.rotation.y += 0.01;
+  jack.rotation.z += 0.02;
+
+  loadedSkateboard.scene.position.x = t * 0.01 ;
+  // loadedSkateboard.scene.position.y = t * 0.01 ;
+  // loadedSkateboard.scene.position.z = t * 0.01 ;
+
+  camera.position.z = (1 + t * 0.01);
+  camera.position.x = ( t * 0.0002);
+  camera.position.y = ( t * 0.0002); 
 }
 
-document.body.onscroll = moveCamera
+window.onscroll = moveCamera
+
 function animate() {
 
   // torus.rotation.x += 0.01;
