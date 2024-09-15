@@ -36,7 +36,8 @@ loader.load(
 
     const skateboard = gltf.scene;
 
-    skateboard.position.set(0, -10, 1)
+    skateboard.position.set(0, -4, 3)
+    skateboard.scale.set(0.35,0.35,0.35)
 
     scene.add(skateboard);
 
@@ -51,8 +52,8 @@ loader.load(
 
 
 
-const pointLight = new THREE.PointLight(0xffffff, 1, 0, 0.01);
-pointLight.position.set(15,10,1);
+const pointLight = new THREE.PointLight(0xffffff, 2, 0, 0.01);
+pointLight.position.set(0,1,5);
 const ambientLight = new THREE.AmbientLight(0xffffff, 2);
 scene.add(pointLight, ambientLight);
 
@@ -111,7 +112,7 @@ const moon = new THREE.Mesh(
     normalMap: normalTexture
   } )
 );
-moon.position.set(15,10,1)
+moon.position.set(15,20,-20)
 scene.add(moon)
 
 // Set camera at 0
@@ -132,8 +133,12 @@ function moveCamera() {
   jack.rotation.x += 0.02;
   jack.rotation.y += 0.01;
   jack.rotation.z += 0.02;
+  jack.position.x = 3 - (t * 0.01);
 
-  loadedSkateboard.scene.position.x = t * 0.01 ;
+  loadedSkateboard.scene.position.x = t * 0.005 ;
+  loadedSkateboard.scene.position.y = -4 + (t * 0.005);
+  loadedSkateboard.scene.rotation.y = 1.6 + (t * 0.005);
+  loadedSkateboard.scene.rotation.x = t * 0.0005;
   // loadedSkateboard.scene.position.y = t * 0.01 ;
   // loadedSkateboard.scene.position.z = t * 0.01 ;
 
