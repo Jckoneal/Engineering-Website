@@ -8,6 +8,7 @@ const scene = new THREE.Scene();
 const loader = new GLTFLoader();
 
 
+
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
 
@@ -21,6 +22,8 @@ camera.position.setZ(30);
 
 renderer.render( scene, camera);
 
+scene.background = new THREE.Color( 0xffffff );
+
 // const geometry = new THREE.TorusGeometry(10, 3, 16, 100)
 // const material = new THREE.MeshStandardMaterial( { color: 0xFF6347 } )
 // const torus = new THREE.Mesh( geometry, material );
@@ -31,22 +34,22 @@ let loadedSkateboard;
 loader.load(
   '/Skateboard/Skateboard.glb',
   function (gltf) {
-
+    
     loadedSkateboard = gltf
-
+    
     const skateboard = gltf.scene;
-
+    
     skateboard.position.set(0, -4, 3)
     skateboard.scale.set(0.35,0.35,0.35)
-
+    
     scene.add(skateboard);
-
+    
   },
-
+  
   function ( xhr ) {
-
+    
     console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
-
+    
   }
 );
 
@@ -62,6 +65,9 @@ scene.add(lightHelper)
 
 // const gridHelper = new THREE.GridHelper();
 // scene.add(gridHelper)
+
+
+
 
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
@@ -139,7 +145,6 @@ function moveCamera() {
   loadedSkateboard.scene.position.y = -4 + (t * 0.005);
   loadedSkateboard.scene.rotation.y = 1.6 + (t * 0.005);
   loadedSkateboard.scene.rotation.x = t * 0.0005;
-  // loadedSkateboard.scene.position.y = t * 0.01 ;
   // loadedSkateboard.scene.position.z = t * 0.01 ;
 
   camera.position.z = (1 + t * 0.01);
