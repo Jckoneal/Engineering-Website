@@ -146,11 +146,11 @@ function moveCamera() {
     
     jack.position.y = ((t-s) * 0.00);
     jack.position.z = (-5 + (s * 0.009)) - ((t-s) * 0.01);
-    jack.position.x = ( (2.5 + ((s) * 0.005)) + ((t-s) * 0.05))
+    jack.position.x = ( (2.5 + ((s) * 0.004)) + ((t-s) * 0.04))
   }
   else {
     jack.position.z = -5 + (t * 0.009);
-    jack.position.x = (2.5 + ((t) * 0.005))
+    jack.position.x = (2.5 + ((t) * 0.004))
   }
   
 
