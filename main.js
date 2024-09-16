@@ -4,9 +4,9 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
 
 const scene = new THREE.Scene();
-
 const loader = new GLTFLoader();
 const loader1 = new GLTFLoader();
+const skateboardScale = 0.75;
 
 
 
@@ -14,7 +14,8 @@ const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.inner
 
 
 const renderer = new THREE.WebGLRenderer({
-  canvas: document.querySelector('#bg'),
+  canvas: document.querySelector('#bg'), 
+  alpha: true
 });
 
 renderer.setPixelRatio( window.devicePixelRatio );
@@ -23,7 +24,7 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 
 renderer.render( scene, camera);
 
-scene.background = new THREE.Color( 0xffffff );
+// scene.background = new THREE.Color( 0xffffff );
 
 // const geometry = new THREE.TorusGeometry(10, 3, 16, 100)
 // const material = new THREE.MeshStandardMaterial( { color: 0xFF6347 } )
@@ -40,8 +41,8 @@ loader.load(
     
     const skateboard = gltf.scene;
     
-    skateboard.position.set(0, -4, 15)
-    skateboard.scale.set(0.35,0.35,0.35)
+    skateboard.position.set(0, -4, 0)
+    skateboard.scale.set(skateboardScale,skateboardScale,skateboardScale);
     
     scene.add(skateboard);
     
@@ -118,17 +119,17 @@ function addNearStar() {
 }
 // Array(20).fill().forEach(addNearStar)
 
-const controls = new OrbitControls(camera, renderer.domElement);
-scene.add(controls)
+// const controls = new OrbitControls(camera, renderer.domElement);
+// scene.add(controls)
 
 const Screenshot1 = new THREE.TextureLoader().load('./CADScreenshot1.jpg')
 
 const CADScreenshot1 = new THREE.Mesh(
-  new THREE.BoxGeometry(4,3,0.11),
+  new THREE.BoxGeometry(8,6,0.1),
   new THREE.MeshBasicMaterial( { map: Screenshot1 })
 )
 scene.add(CADScreenshot1)
-CADScreenshot1.position.set(3.5, -100, 0)
+CADScreenshot1.position.set(5, -100, -4)
 
 const jackTexture = new THREE.TextureLoader().load('./Jack.jpg')
 
@@ -140,7 +141,7 @@ scene.add(jack)
 
 jack.position.x = 2.5; 
 jack.position.y = 0; 
-jack.position.z = -5;
+jack.position.z = 0;
 
 const moonTexture = new THREE.TextureLoader().load('./moon.jpg');
 const normalTexture = new THREE.TextureLoader().load('./normal.jpg')
@@ -155,9 +156,9 @@ const moon = new THREE.Mesh(
 moon.position.set(15,20,-20)
 // scene.add(moon)
 
-// Set camera at 0
 
-camera.position.z = 1;
+
+camera.position.z = 6;
 camera.position.x;
 camera.position.y; 
 
@@ -178,33 +179,33 @@ function moveCamera() {
   if (t > s) {
     
     jack.position.y = ((t-s) * 0.00);
-    jack.position.z = (-5 + (s * 0.009)) - ((t-s) * 0.01);
+    // jack.position.z = (-5 + (s * 0.009)) - ((t-s) * 0.01);
     jack.position.x = ( (2.5 + ((s) * 0.004)) + ((t-s) * 0.05))
   }
   else {
-    jack.position.z = -5 + (t * 0.009);
+    // jack.position.z = -5 + (t * 0.009);
     jack.position.x = (2.5 + ((t) * 0.004))
   }
   
 
   // loadedSkateboard.scene.position.x = 1.5 + ((t-1200) * 0.005) ;
-  loadedSkateboard.scene.position.y = 0 + ((t-1000) * 0.01);
-  loadedSkateboard.scene.position.z = 7 + ((t-1000) * 0.01);
+  loadedSkateboard.scene.position.y = 2.5 + ((t-1000) * 0.0125);
+  // loadedSkateboard.scene.position.z = 7 + ((t-1000) * 0.01);
   loadedSkateboard.scene.rotation.y = 1 + ((t-1000) * 0.005);
   loadedSkateboard.scene.rotation.x = (t-1000) * 0.0005;
   // loadedSkateboard.scene.position.z = t * 0.01 ;
-  CADScreenshot1.position.y = -4.5 + ((t-1000) * 0.015);
-  CADScreenshot1.position.z = 5 + ((t-1000) * 0.01);
+  CADScreenshot1.position.y = -18 + ((t) * 0.015);
+  // CADScreenshot1.position.z = 5 + ((t-1000) * 0.01);
   CADScreenshot1.rotation.y = 1.3 + ((t) * 0.001);
 
-  loadedTrucks.scene.position.y = -5.5 + ((t-1000) * 0.01);
-  loadedTrucks.scene.position.z = 7 + ((t-1000) * 0.01);
-  loadedTrucks.scene.rotation.y = 1 + ((t-1000) * 0.005);
+  loadedTrucks.scene.position.y = -4 + ((t-1000) * 0.01);
+  // loadedTrucks.scene.position.z = 7 + ((t-1000) * 0.01);
+  loadedTrucks.scene.rotation.y = ((t) * 0.005);
   loadedTrucks.scene.rotation.x = (t-1500) * 0.0005;
   
   
 
-  camera.position.z = (1 + t * 0.01);
+  // camera.position.z = (1 + t * 0.01);
   camera.position.x = ( t * 0.0002);
   camera.position.y = ( t * 0.0002); 
 }
@@ -217,7 +218,7 @@ function animate() {
   // torus.rotation.y += 0.005;
   // torus.rotation.z += 0.01;
 
-  controls.update();
+  // controls.update();
 
   requestAnimationFrame( animate );
   renderer.render( scene, camera );
