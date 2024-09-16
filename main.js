@@ -6,6 +6,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
 const scene = new THREE.Scene();
 
 const loader = new GLTFLoader();
+const loader1 = new GLTFLoader();
 
 
 
@@ -18,7 +19,7 @@ const renderer = new THREE.WebGLRenderer({
 
 renderer.setPixelRatio( window.devicePixelRatio );
 renderer.setSize( window.innerWidth, window.innerHeight );
-camera.position.setZ(30);
+
 
 renderer.render( scene, camera);
 
@@ -39,7 +40,7 @@ loader.load(
     
     const skateboard = gltf.scene;
     
-    skateboard.position.set(4.25, -4, 15)
+    skateboard.position.set(0, -4, 15)
     skateboard.scale.set(0.35,0.35,0.35)
     
     scene.add(skateboard);
@@ -53,7 +54,29 @@ loader.load(
   }
 );
 
+let loadedTrucks;
 
+loader1.load(
+  './Trucks.glb',
+  function (gltf) {
+    
+    loadedTrucks = gltf
+    
+    const trucks = gltf.scene;
+    
+    trucks.position.set(0, 0, 0)
+    trucks.scale.set(2,2,2)
+    
+    scene.add(trucks);
+    
+  },
+  
+  function ( xhr ) {
+    
+    console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    
+  }
+);
 
 const pointLight = new THREE.PointLight(0xffffff, 2, 0, 0.01);
 pointLight.position.set(0,1,5);
@@ -95,6 +118,15 @@ function addNearStar() {
 
 const controls = new OrbitControls(camera, renderer.domElement);
 scene.add(controls)
+
+const Screenshot1 = new THREE.TextureLoader().load('./CADScreenshot1.jpg')
+
+const CADScreenshot1 = new THREE.Mesh(
+  new THREE.BoxGeometry(4,3,0.11),
+  new THREE.MeshBasicMaterial( { map: Screenshot1 })
+)
+scene.add(CADScreenshot1)
+CADScreenshot1.position.set(3.5, -100, 0)
 
 const jackTexture = new THREE.TextureLoader().load('./Jack.jpg')
 
@@ -154,12 +186,14 @@ function moveCamera() {
   
 
   // loadedSkateboard.scene.position.x = 1.5 + ((t-1200) * 0.005) ;
-  loadedSkateboard.scene.position.y = -3 + ((t-1000) * 0.0075);
-  loadedSkateboard.scene.position.z = 5 + ((t-1000) * 0.01);
-  loadedSkateboard.scene.rotation.y = 1.6 + ((t-1000) * 0.005);
+  loadedSkateboard.scene.position.y = 0 + ((t-1000) * 0.01);
+  loadedSkateboard.scene.position.z = 7 + ((t-1000) * 0.01);
+  loadedSkateboard.scene.rotation.y = 1 + ((t-1000) * 0.005);
   loadedSkateboard.scene.rotation.x = (t-1000) * 0.0005;
   // loadedSkateboard.scene.position.z = t * 0.01 ;
-
+  CADScreenshot1.position.y = -4.5 + ((t-1000) * 0.015);
+  CADScreenshot1.position.z = 5 + ((t-1000) * 0.01);
+  CADScreenshot1.rotation.y = 1.3 + ((t) * 0.001);
   
   
 
