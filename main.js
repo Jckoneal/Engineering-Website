@@ -39,7 +39,7 @@ loader.load(
     
     const skateboard = gltf.scene;
     
-    skateboard.position.set(0, -4, 3)
+    skateboard.position.set(4.25, -4, 15)
     skateboard.scale.set(0.35,0.35,0.35)
     
     scene.add(skateboard);
@@ -79,7 +79,7 @@ function addStar() {
   scene.add(star)
 }
 
-Array(2000).fill().forEach(addStar)
+// Array(2000).fill().forEach(addStar)
 
 function addNearStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
@@ -91,7 +91,7 @@ function addNearStar() {
   nearStar.position.set(x,y,z);
   scene.add(nearStar)
 }
-Array(20).fill().forEach(addNearStar)
+// Array(20).fill().forEach(addNearStar)
 
 const controls = new OrbitControls(camera, renderer.domElement);
 scene.add(controls)
@@ -104,7 +104,7 @@ const jack = new THREE.Mesh(
 );
 scene.add(jack)
 
-jack.position.x = 3; 
+jack.position.x = 2.5; 
 jack.position.y = 0; 
 jack.position.z = -5;
 
@@ -119,7 +119,7 @@ const moon = new THREE.Mesh(
   } )
 );
 moon.position.set(15,20,-20)
-scene.add(moon)
+// scene.add(moon)
 
 // Set camera at 0
 
@@ -132,20 +132,37 @@ function moveCamera() {
   const t = document.body.scrollTop || document.documentElement.scrollTop || window.scrollY;
 
 
-  moon.rotation.x += 0.05;
-  moon.rotation.y += 0.075;
-  moon.rotation.z +=0.05;
+
+  // moon.rotation.x += 0.05;
+  // moon.rotation.y += 0.075;
+  // moon.rotation.z +=0.05;
   
   jack.rotation.x += 0.02;
   jack.rotation.y += 0.01;
   jack.rotation.z += 0.02;
-  jack.position.x = 3 - (t * 0.01);
 
-  loadedSkateboard.scene.position.x = t * 0.005 ;
-  loadedSkateboard.scene.position.y = -4 + (t * 0.005);
-  loadedSkateboard.scene.rotation.y = 1.6 + (t * 0.005);
-  loadedSkateboard.scene.rotation.x = t * 0.0005;
+  let s = 600
+  if (t > s) {
+    
+    jack.position.y = ((t-s) * 0.00);
+    jack.position.z = (-5 + (s * 0.009)) - ((t-s) * 0.01);
+    jack.position.x = ( (2.5 + ((s) * 0.005)) + ((t-s) * 0.05))
+  }
+  else {
+    jack.position.z = -5 + (t * 0.009);
+    jack.position.x = (2.5 + ((t) * 0.005))
+  }
+  
+
+  // loadedSkateboard.scene.position.x = 1.5 + ((t-1200) * 0.005) ;
+  loadedSkateboard.scene.position.y = -3 + ((t-1000) * 0.0075);
+  loadedSkateboard.scene.position.z = 5 + ((t-1000) * 0.01);
+  loadedSkateboard.scene.rotation.y = 1.6 + ((t-1000) * 0.005);
+  loadedSkateboard.scene.rotation.x = (t-1000) * 0.0005;
   // loadedSkateboard.scene.position.z = t * 0.01 ;
+
+  
+  
 
   camera.position.z = (1 + t * 0.01);
   camera.position.x = ( t * 0.0002);
