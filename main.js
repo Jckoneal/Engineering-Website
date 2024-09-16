@@ -138,7 +138,6 @@ function moveCamera() {
   // moon.rotation.z +=0.05;
   
   jack.rotation.x = t * 0.003;
-
   jack.rotation.z = t * 0.002;
 
   let s = 600
@@ -146,7 +145,7 @@ function moveCamera() {
     
     jack.position.y = ((t-s) * 0.00);
     jack.position.z = (-5 + (s * 0.009)) - ((t-s) * 0.01);
-    jack.position.x = ( (2.5 + ((s) * 0.004)) + ((t-s) * 0.04))
+    jack.position.x = ( (2.5 + ((s) * 0.004)) + ((t-s) * 0.05))
   }
   else {
     jack.position.z = -5 + (t * 0.009);
