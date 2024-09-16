@@ -64,8 +64,8 @@ loader1.load(
     
     const trucks = gltf.scene;
     
-    trucks.position.set(0, 0, 0)
-    trucks.scale.set(2,2,2)
+    trucks.position.set(2.5, -100, 0)
+    trucks.scale.set(15,15,15)
     
     scene.add(trucks);
     
@@ -80,11 +80,13 @@ loader1.load(
 
 const pointLight = new THREE.PointLight(0xffffff, 2, 0, 0.01);
 pointLight.position.set(0,1,5);
-const ambientLight = new THREE.AmbientLight(0xffffff, 2);
+const pointLight1 = new THREE.PointLight(0xffffff, 2, 0, 0.01);
+pointLight1.position.set(0,1,300);
+const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(pointLight, ambientLight);
 
-const lightHelper = new THREE.PointLightHelper(pointLight);
-scene.add(lightHelper)
+// const lightHelper = new THREE.PointLightHelper(pointLight);
+// scene.add(lightHelper)
 
 // const gridHelper = new THREE.GridHelper();
 // scene.add(gridHelper)
@@ -194,6 +196,11 @@ function moveCamera() {
   CADScreenshot1.position.y = -4.5 + ((t-1000) * 0.015);
   CADScreenshot1.position.z = 5 + ((t-1000) * 0.01);
   CADScreenshot1.rotation.y = 1.3 + ((t) * 0.001);
+
+  loadedTrucks.scene.position.y = -5.5 + ((t-1000) * 0.01);
+  loadedTrucks.scene.position.z = 7 + ((t-1000) * 0.01);
+  loadedTrucks.scene.rotation.y = 1 + ((t-1000) * 0.005);
+  loadedTrucks.scene.rotation.x = (t-1500) * 0.0005;
   
   
 
