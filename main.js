@@ -41,7 +41,7 @@ loader.load(
     
     const skateboard = gltf.scene;
     
-    skateboard.position.set(0, -4, 0)
+    skateboard.position.set(0, -100, 0)
     skateboard.scale.set(skateboardScale,skateboardScale,skateboardScale);
     
     scene.add(skateboard);
