@@ -6,7 +6,9 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
 const scene = new THREE.Scene();
 const loader = new GLTFLoader();
 const loader1 = new GLTFLoader();
+const loader2 = new GLTFLoader();
 const skateboardScale = 0.75;
+const bikeScale = 0.005
 
 
 
@@ -30,6 +32,31 @@ renderer.render( scene, camera);
 // const material = new THREE.MeshStandardMaterial( { color: 0xFF6347 } )
 // const torus = new THREE.Mesh( geometry, material );
 // scene.add(torus);
+
+let loadedBike;
+
+loader2.load(
+  '/DHBike.glb',
+  function (gltf) {
+    
+    loadedBike = gltf
+    
+    const bike = gltf.scene;
+    
+    bike.position.set(-4, -4, -5)
+    bike.rotation.set(3.14/2,-3.14/2,-3.14/2)
+    bike.scale.set(bikeScale,bikeScale,bikeScale);
+    
+    scene.add(bike);
+    
+  },
+  
+  function ( xhr ) {
+    
+    console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    
+  }
+);
 
 let loadedSkateboard;
 
@@ -187,9 +214,9 @@ function moveCamera() {
     jack.position.x = (2.5 + ((t) * 0.004))
   }
   
-
+  loadedBike.scene.position.y = -17 + ((t) * 0.02)
   // loadedSkateboard.scene.position.x = 1.5 + ((t-1200) * 0.005) ;
-  loadedSkateboard.scene.position.y = 2.5 + ((t-1000) * 0.0125);
+  loadedSkateboard.scene.position.y = -10 + ((t-1000) * 0.0125);
   // loadedSkateboard.scene.position.z = 7 + ((t-1000) * 0.01);
   loadedSkateboard.scene.rotation.y = 1 + ((t-1000) * 0.005);
   loadedSkateboard.scene.rotation.x = (t-1000) * 0.0005;
