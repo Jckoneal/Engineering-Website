@@ -235,10 +235,10 @@ function moveCamera() {
   }
   
   // loadedBike.scene.position.y = -16.5 + ((t) * 0.02)
-  // loadedSkateboard.scene.position.x = 1.5 + ((t-1200) * 0.005) ;
+  loadedSkateboard.scene.position.x =  ((t-1200) * 0.005) ;
   loadedSkateboard.scene.position.y = -10 + ((t-1000) * 0.0125);
   // loadedSkateboard.scene.position.z = 7 + ((t-1000) * 0.01);
-  loadedSkateboard.scene.rotation.y = 1 + ((t-1000) * 0.005);
+  loadedSkateboard.scene.rotation.y = 1 + ((t-1200) * 0.005);
   loadedSkateboard.scene.rotation.x = (t-1000) * 0.0005;
   // loadedSkateboard.scene.position.z = t * 0.01 ;
   CADScreenshot1.position.y = -18 + ((t) * 0.015);
