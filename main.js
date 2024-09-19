@@ -8,7 +8,7 @@ const loader = new GLTFLoader();
 const loader1 = new GLTFLoader();
 const loader2 = new GLTFLoader();
 const skateboardScale = 0.75;
-const bikeScale = 0.005
+const bikeScale = 0.08
 
 
 
@@ -36,14 +36,14 @@ renderer.render( scene, camera);
 let loadedBike;
 
 loader2.load(
-  '/DHBike.glb',
+  './DHBike.glb',
   function (gltf) {
     
     loadedBike = gltf
     
     const bike = gltf.scene;
     
-    bike.position.set(-4, -4, -5)
+    bike.position.set(-6, -40, -5)
     bike.rotation.set(3.14/2,-3.14/2,-3.14/2)
     bike.scale.set(bikeScale,bikeScale,bikeScale);
     
@@ -108,16 +108,17 @@ loader1.load(
 
 const pointLight = new THREE.PointLight(0xffffff, 2, 0, 0.01);
 pointLight.position.set(0,1,5);
-const pointLight1 = new THREE.PointLight(0xffffff, 2, 0, 0.01);
-pointLight1.position.set(0,1,300);
-const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+const pointLight1 = new THREE.PointLight(0xFFFFFF, 2, 0, 0.01);
+pointLight1.position.set(-2,-1,6);
+const ambientLight = new THREE.AmbientLight(0xFFFFFF, 1);
 scene.add(pointLight, ambientLight);
 
-// const lightHelper = new THREE.PointLightHelper(pointLight);
-// scene.add(lightHelper)
-
-// const gridHelper = new THREE.GridHelper();
-// scene.add(gridHelper)
+const softbox = new THREE.Mesh(
+  new THREE.BoxGeometry(100,100,1),
+  new THREE.MeshStandardMaterial( {color: 0xFFFFFF} ),
+)
+scene.add(softbox)
+softbox.position.set(0,0,7)
 
 
 
@@ -158,12 +159,31 @@ const CADScreenshot1 = new THREE.Mesh(
 scene.add(CADScreenshot1)
 CADScreenshot1.position.set(5, -100, -4)
 
-const jackTexture = new THREE.TextureLoader().load('./Jack.jpg')
+const textureLoader = new THREE.TextureLoader
+
+const jackTexture = [
+  new THREE.MeshBasicMaterial({
+    map: textureLoader.load("./Jack5.png"), 
+  }),
+  new THREE.MeshBasicMaterial({
+    map: textureLoader.load("./Jack2.png"), 
+  }),
+  new THREE.MeshBasicMaterial({
+    map: textureLoader.load("./Jack6.JPG"), 
+  }),
+  new THREE.MeshBasicMaterial({
+    map: textureLoader.load("./Jack4.png"), 
+  }),
+  new THREE.MeshBasicMaterial({
+    map: textureLoader.load("./Jack.jpg"), 
+  }),
+  new THREE.MeshBasicMaterial({
+    map: textureLoader.load("./Jack3.png"), 
+  }),
+];
 
 const jack = new THREE.Mesh(
-  new THREE.BoxGeometry(3, 3, 3),
-  new THREE.MeshBasicMaterial( { map: jackTexture } )
-);
+  new THREE.BoxGeometry(3, 3, 3), jackTexture);
 scene.add(jack)
 
 jack.position.x = 2.5; 
@@ -202,19 +222,19 @@ function moveCamera() {
   jack.rotation.x = t * 0.003;
   jack.rotation.z = t * 0.002;
 
-  let s = 600
+  let s = 700
   if (t > s) {
     
     jack.position.y = ((t-s) * 0.00);
     // jack.position.z = (-5 + (s * 0.009)) - ((t-s) * 0.01);
-    jack.position.x = ( (2.5 + ((s) * 0.004)) + ((t-s) * 0.05))
+    jack.position.x = ( (2.5 + ((s) * 0.004)) + ((t-s) * 0.02))
   }
   else {
     // jack.position.z = -5 + (t * 0.009);
     jack.position.x = (2.5 + ((t) * 0.004))
   }
   
-  loadedBike.scene.position.y = -17 + ((t) * 0.02)
+  loadedBike.scene.position.y = -16.5 + ((t) * 0.02)
   // loadedSkateboard.scene.position.x = 1.5 + ((t-1200) * 0.005) ;
   loadedSkateboard.scene.position.y = -10 + ((t-1000) * 0.0125);
   // loadedSkateboard.scene.position.z = 7 + ((t-1000) * 0.01);
@@ -225,7 +245,7 @@ function moveCamera() {
   // CADScreenshot1.position.z = 5 + ((t-1000) * 0.01);
   CADScreenshot1.rotation.y = 1.3 + ((t) * 0.001);
 
-  loadedTrucks.scene.position.y = -4 + ((t-1000) * 0.01);
+  loadedTrucks.scene.position.y = -4.5 + ((t-1000) * 0.01);
   // loadedTrucks.scene.position.z = 7 + ((t-1000) * 0.01);
   loadedTrucks.scene.rotation.y = ((t) * 0.005);
   loadedTrucks.scene.rotation.x = (t-1500) * 0.0005;

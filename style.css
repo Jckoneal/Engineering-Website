@@ -14,6 +14,8 @@ canvas {
   font-family: -apple-system, BlinkMacSystemFont;
   font-weight: 400;
   font-style: compact;
+
+  overflow-x: hidden;
 }
 
 
