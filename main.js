@@ -35,28 +35,28 @@ renderer.render( scene, camera);
 
 let loadedBike;
 
-loader2.load(
-  './DHBike.glb',
-  function (gltf) {
+// loader2.load(
+//   './DHBike.glb',
+//   function (gltf) {
     
-    loadedBike = gltf
+//     loadedBike = gltf
     
-    const bike = gltf.scene;
+//     const bike = gltf.scene;
     
-    bike.position.set(-6, -40, -5)
-    bike.rotation.set(3.14/2,-3.14/2,-3.14/2)
-    bike.scale.set(bikeScale,bikeScale,bikeScale);
+//     bike.position.set(-6, -40, -5)
+//     bike.rotation.set(3.14/2,-3.14/2,-3.14/2)
+//     bike.scale.set(bikeScale,bikeScale,bikeScale);
     
-    scene.add(bike);
+//     scene.add(bike);
     
-  },
+//   },
   
-  function ( xhr ) {
+//   function ( xhr ) {
     
-    console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+//     console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
     
-  }
-);
+//   }
+// );
 
 let loadedSkateboard;
 
@@ -234,7 +234,7 @@ function moveCamera() {
     jack.position.x = (2.5 + ((t) * 0.004))
   }
   
-  loadedBike.scene.position.y = -16.5 + ((t) * 0.02)
+  // loadedBike.scene.position.y = -16.5 + ((t) * 0.02)
   // loadedSkateboard.scene.position.x = 1.5 + ((t-1200) * 0.005) ;
   loadedSkateboard.scene.position.y = -10 + ((t-1000) * 0.0125);
   // loadedSkateboard.scene.position.z = 7 + ((t-1000) * 0.01);
