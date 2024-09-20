@@ -130,11 +130,11 @@ loader1.load(
   }
 );
 
-const pointLight = new THREE.PointLight(0xffffff, 2, 0, 0.01);
+const pointLight = new THREE.PointLight(0xFFFFFF, 5, 0, 0.001);
 pointLight.position.set(0,1,5);
-const pointLight1 = new THREE.PointLight(0xFFFFFF, 2, 0, 0.01);
+const pointLight1 = new THREE.PointLight(0xFFFFFF, 5, 0, 0.001);
 pointLight1.position.set(-2,-1,6);
-const ambientLight = new THREE.AmbientLight(0xFFFFFF, 1);
+const ambientLight = new THREE.AmbientLight(0xFFFFFF, 2);
 scene.add(pointLight, ambientLight);
 
 const softbox = new THREE.Mesh(
@@ -260,13 +260,13 @@ function moveCamera() {
   
   // loadedBike.scene.position.y = -16.5 + ((t) * 0.02)
   loadedWheel.scene.position.x =  5 +  ((t-1200) * (-0.004)) ;
-  loadedWheel.scene.position.y = -9.5 + ((t-1000) * 0.0125);
-  loadedWheel.scene.rotation.y = 1 + (t * 0.01);
+  loadedWheel.scene.position.y = -10 + ((t-1000) * 0.0125);
+  loadedWheel.scene.rotation.y = 1 + (t * -0.01);
   loadedSkateboard.scene.position.x =  0.1 +  ((t-1200) * 0.004) ;
   loadedSkateboard.scene.position.y = -12 + ((t-1000) * 0.0125);
   // loadedSkateboard.scene.position.z = 7 + ((t-1000) * 0.01);
   loadedSkateboard.scene.rotation.y = 2 + ((t) * 0.005);
-  loadedSkateboard.scene.rotation.x = (t-1300) * -0.0005;
+  loadedSkateboard.scene.rotation.x = (t-2000) * -0.0005;
   // loadedSkateboard.scene.position.z = t * 0.01 ;
   CADScreenshot1.position.y = -18 + ((t) * 0.015);
   // CADScreenshot1.position.z = 5 + ((t-1000) * 0.01);
