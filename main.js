@@ -7,8 +7,9 @@ const scene = new THREE.Scene();
 const loader = new GLTFLoader();
 const loader1 = new GLTFLoader();
 const loader2 = new GLTFLoader();
-const skateboardScale = 0.75;
+const skateboardScale = 0.5;
 const bikeScale = 0.08
+const wheelScale = 1
 
 
 
@@ -82,6 +83,29 @@ loader.load(
   }
 );
 
+let loadedWheel;
+
+loader.load(
+  './Wheel.glb',
+  function (gltf) {
+    
+    loadedWheel = gltf
+    
+    const wheel = gltf.scene;
+    
+    wheel.position.set(0, -100, 0)
+    wheel.scale.set(wheelScale,wheelScale,wheelScale);
+    
+    scene.add(wheel);
+    
+  },
+  
+  function ( xhr ) {
+    
+    console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+    
+  }
+);
 let loadedTrucks;
 
 loader1.load(
@@ -235,17 +259,20 @@ function moveCamera() {
   }
   
   // loadedBike.scene.position.y = -16.5 + ((t) * 0.02)
-  loadedSkateboard.scene.position.x =  ((t-1200) * 0.005) ;
-  loadedSkateboard.scene.position.y = -10 + ((t-1000) * 0.0125);
+  loadedWheel.scene.position.x =  5 +  ((t-1200) * (-0.004)) ;
+  loadedWheel.scene.position.y = -9.5 + ((t-1000) * 0.0125);
+  loadedWheel.scene.rotation.y = 1 + (t * 0.01);
+  loadedSkateboard.scene.position.x =  0.1 +  ((t-1200) * 0.004) ;
+  loadedSkateboard.scene.position.y = -12 + ((t-1000) * 0.0125);
   // loadedSkateboard.scene.position.z = 7 + ((t-1000) * 0.01);
-  loadedSkateboard.scene.rotation.y = 1 + ((t-1200) * 0.005);
-  loadedSkateboard.scene.rotation.x = (t-1000) * 0.0005;
+  loadedSkateboard.scene.rotation.y = 2 + ((t) * 0.005);
+  loadedSkateboard.scene.rotation.x = (t-1300) * -0.0005;
   // loadedSkateboard.scene.position.z = t * 0.01 ;
   CADScreenshot1.position.y = -18 + ((t) * 0.015);
   // CADScreenshot1.position.z = 5 + ((t-1000) * 0.01);
   CADScreenshot1.rotation.y = 1.3 + ((t) * 0.001);
 
-  loadedTrucks.scene.position.y = -4.5 + ((t-1000) * 0.01);
+  loadedTrucks.scene.position.y = -5 + ((t-1000) * 0.01);
   // loadedTrucks.scene.position.z = 7 + ((t-1000) * 0.01);
   loadedTrucks.scene.rotation.y = ((t) * 0.005);
   loadedTrucks.scene.rotation.x = (t-1500) * 0.0005;
