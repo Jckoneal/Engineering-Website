@@ -31,7 +31,6 @@ main {
   margin: 0px auto;
   padding: 120px 0px;
   background: transparent;
-  
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 }
@@ -85,19 +84,14 @@ canvas {
     grid-column: 6 / 12;
   }
 
-  .footer { 
-    position: bottom; 
-    bottom: 1300; 
-    left: 0; 
-    z-index: 10;
-}
+
 .nav{
   padding-right: 30px;
   padding-left: 30px;
   width: 100% ;
   height: var(--nav-height);
   position: fixed;
-  z-index: top;
+  z-index: 1000;
   top: 0;
   left: 0;
   background: #FCB615;

@@ -10,13 +10,13 @@
   <body>
     <nav class="nav">
         <u1>
-          <li><a href = "#top" class="nav__link" >Home</a></li>
+          <li><a href = "#h" class="nav__link" >Home</a></li>
           <li><a href = "#CAD" class="nav__link">CAD</a></li>
           <li><a href = "#" class="nav__link">Projects</a></li>
         </u1>
     </nav>
     
-    <main>
+    <main id = "h">
       
       <header>
         <h1>Jack O'Neal</h1>
@@ -58,7 +58,7 @@
         <h2>The Trucks</h2>
 
         <p> Making the trucks was very interesting to me because we made parts in the air before connecting them. 
-          One thing I learned is that you can use a sketch after you made it by using the use tool, this is very helpful because you don't need to remake constraints that you made before. I also helped yannick with an issue where his sketch got constrained wrong because of one miss click and he got stuck.  </p>
+          One thing I learned is that you can use a sketch after you made it by using the use tool, this is very helpful because you don't need to remake constraints that you made before. I also helped Yannick with an issue where his sketch got constrained wrong because of one miss click and he got stuck.  </p>
       
         <h2>Wheels and Bearings</h2>
 
@@ -76,9 +76,8 @@
     <script>
       // NavBar Hiding
       {
-        
         const nav = document.querySelector(".nav")
-          let lastScrollY = window.scrollY;
+        let lastScrollY = window.scrollY;
 
           window.addEventListener("scroll", () => {
             if (lastScrollY < window.scrollY) {

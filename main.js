@@ -252,7 +252,7 @@ function moveCamera() {
     
     jack.position.y = ((t-s-navBarHeight) * 0.00);
     // jack.position.z = (-5 + (s * 0.009)) - ((t-s) * 0.01);
-    jack.position.x = ( (2.5 + ((s) * 0.004)) + ((t-s-navBarHeight) * 0.02))
+    jack.position.x = ( (2.5 + ((s-navBarHeight) * 0.004)) + ((t-s) * 0.02))
   }
   else {
     // jack.position.z = -5 + (t * 0.009);
@@ -260,9 +260,9 @@ function moveCamera() {
   }
   
   // loadedBike.scene.position.y = -16.5 + ((t) * 0.02)
-  loadedWheel.scene.position.x =  5 +  ((t-1200-navBarHeight) * (-0.004)) ;
+  loadedWheel.scene.position.x =  6 +  ((t-1200-navBarHeight) * (-0.004)) ;
   loadedWheel.scene.position.y = -10 + ((t-1000-navBarHeight) * 0.0125);
-  loadedWheel.scene.rotation.y = 1 + ((t-navBarHeight) * -0.01);
+  loadedWheel.scene.rotation.y = 1.5+ ((t-navBarHeight) * -0.01);
   loadedSkateboard.scene.position.x =  0.1 +  ((t-1200-navBarHeight) * 0.004) ;
   loadedSkateboard.scene.position.y = -12 + ((t-1000-navBarHeight) * 0.0125);
   // loadedSkateboard.scene.position.z = 7 + ((t-1000) * 0.01);
