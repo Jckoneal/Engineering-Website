@@ -8,7 +8,13 @@
 
   </head>
   <body>
-
+    <nav class="nav">
+        <u1>
+          <li><a href = "#top" class="nav__link" >Home</a></li>
+          <li><a href = "#CAD" class="nav__link">CAD</a></li>
+          <li><a href = "#" class="nav__link">Projects</a></li>
+        </u1>
+    </nav>
     
     <main>
       
@@ -35,7 +41,7 @@
         
       </section>
       
-      <section class="light">
+      <section class="light" id = "CAD">
         <h2>CAD</h2>
         
         
@@ -67,22 +73,25 @@
     </main>
     
     <script type="module" src="/main.js"></script>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    <script>
+      // NavBar Hiding
+      {
+        
+        const nav = document.querySelector(".nav")
+          let lastScrollY = window.scrollY;
 
-
-
-
-
-
+          window.addEventListener("scroll", () => {
+            if (lastScrollY < window.scrollY) {
+              nav.classList.add("nav--hidden");
+            }
+            else {
+              nav.classList.remove("nav--hidden");
+            }
+            lastScrollY = window.scrollY
+          });
+      }
+    </script>
 
   </body>
+
 </html>

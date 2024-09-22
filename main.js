@@ -10,8 +10,9 @@ const loader2 = new GLTFLoader();
 const skateboardScale = 0.5;
 const bikeScale = 0.08
 const wheelScale = 1
+const navBarHeight = 100;
 
-
+window.scrollTo(0, navBarHeight);
 
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
@@ -243,45 +244,45 @@ function moveCamera() {
   // moon.rotation.y += 0.075;
   // moon.rotation.z +=0.05;
   
-  jack.rotation.x = t * 0.003;
-  jack.rotation.z = t * 0.002;
+  jack.rotation.x = (t-navBarHeight) * 0.003;
+  jack.rotation.z = (t-navBarHeight) * 0.002;
 
   let s = 700
   if (t > s) {
     
-    jack.position.y = ((t-s) * 0.00);
+    jack.position.y = ((t-s-navBarHeight) * 0.00);
     // jack.position.z = (-5 + (s * 0.009)) - ((t-s) * 0.01);
-    jack.position.x = ( (2.5 + ((s) * 0.004)) + ((t-s) * 0.02))
+    jack.position.x = ( (2.5 + ((s) * 0.004)) + ((t-s-navBarHeight) * 0.02))
   }
   else {
     // jack.position.z = -5 + (t * 0.009);
-    jack.position.x = (2.5 + ((t) * 0.004))
+    jack.position.x = (2.5 + ((t-navBarHeight) * 0.004))
   }
   
   // loadedBike.scene.position.y = -16.5 + ((t) * 0.02)
-  loadedWheel.scene.position.x =  5 +  ((t-1200) * (-0.004)) ;
-  loadedWheel.scene.position.y = -10 + ((t-1000) * 0.0125);
-  loadedWheel.scene.rotation.y = 1 + (t * -0.01);
-  loadedSkateboard.scene.position.x =  0.1 +  ((t-1200) * 0.004) ;
-  loadedSkateboard.scene.position.y = -12 + ((t-1000) * 0.0125);
+  loadedWheel.scene.position.x =  5 +  ((t-1200-navBarHeight) * (-0.004)) ;
+  loadedWheel.scene.position.y = -10 + ((t-1000-navBarHeight) * 0.0125);
+  loadedWheel.scene.rotation.y = 1 + ((t-navBarHeight) * -0.01);
+  loadedSkateboard.scene.position.x =  0.1 +  ((t-1200-navBarHeight) * 0.004) ;
+  loadedSkateboard.scene.position.y = -12 + ((t-1000-navBarHeight) * 0.0125);
   // loadedSkateboard.scene.position.z = 7 + ((t-1000) * 0.01);
-  loadedSkateboard.scene.rotation.y = 2 + ((t) * 0.005);
-  loadedSkateboard.scene.rotation.x = (t-2000) * -0.0005;
+  loadedSkateboard.scene.rotation.y = 2 + ((t-navBarHeight) * 0.005);
+  loadedSkateboard.scene.rotation.x = (t-2000-navBarHeight) * -0.0005;
   // loadedSkateboard.scene.position.z = t * 0.01 ;
-  CADScreenshot1.position.y = -18 + ((t) * 0.015);
+  CADScreenshot1.position.y = -18 + ((t-navBarHeight) * 0.015);
   // CADScreenshot1.position.z = 5 + ((t-1000) * 0.01);
-  CADScreenshot1.rotation.y = 1.3 + ((t) * 0.001);
+  CADScreenshot1.rotation.y = 1.3 + ((t-navBarHeight) * 0.001);
 
-  loadedTrucks.scene.position.y = -5 + ((t-1000) * 0.01);
+  loadedTrucks.scene.position.y = -5 + ((t-1000-navBarHeight) * 0.01);
   // loadedTrucks.scene.position.z = 7 + ((t-1000) * 0.01);
-  loadedTrucks.scene.rotation.y = ((t) * 0.005);
-  loadedTrucks.scene.rotation.x = (t-1500) * 0.0005;
+  loadedTrucks.scene.rotation.y = ((t-navBarHeight) * 0.005);
+  loadedTrucks.scene.rotation.x = (t-1500-navBarHeight) * 0.0005;
   
   
 
   // camera.position.z = (1 + t * 0.01);
-  camera.position.x = ( t * 0.0002);
-  camera.position.y = ( t * 0.0002); 
+  camera.position.x = ( (t-navBarHeight) * 0.0002);
+  camera.position.y = ( (t-navBarHeight) * 0.0002); 
 }
 
 window.onscroll = moveCamera
