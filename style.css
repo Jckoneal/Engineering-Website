@@ -98,6 +98,7 @@ canvas {
   display: flex;
   align-items: center;
   transition: transform 0.2s;
+  margin: auto;
 
 }
 .nav__link {
