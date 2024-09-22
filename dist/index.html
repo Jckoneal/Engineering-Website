@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head> 
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/JackLogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jack O'Neal | Engineering Portfolio</title>
+
+    <script type="module" crossorigin src="/assets/index-C2jOVWzo.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-goMaJ-eg.css">
+  </head>
+  <body>
+    <nav class="nav">
+        <u1>
+          <li><a href = "/#h" class="nav__link" >Home</a></li>
+          <li><a href = "/#CAD" class="nav__link">CAD</a></li>
+          <li><a href = "#" class="nav__link">Projects</a></li>
+          <li><a href = "/about.html" class="nav__link">About</a></li>
+        </u1>
+    </nav>
+    
+    <main id = "h">
+      
+      <header>
+        <h1>Jack O'Neal</h1>
+        <p>🚀 Welcome to my website!</p>
+      </header>
+      
+      
+      <section>
+        <p> 
+          Scroll ⬇️ 
+        </p>
+        <br>
+        <h2>About Me</h2>
+        <p>
+          I am Jack, and I like to make stuff. I have been making things as long as I can remember. Through many different projects.
+          I have learned how to use CAD to make 3d models and PCB's.
+          I learned to program in Python, HTML, Java, JavaScript, C, C++. 
+        </p>
+
+        <p>I like to do a lot of sports, although my main sport is Mountain Biking I also do Snowboarding, Skimboarding, Surfing, Cross Country Running, and Backpacking.</p>
+        
+        
+      </section>
+      
+      <section class="light" id = "CAD">
+        <h2>CAD</h2>
+        
+        
+        <p>
+          For the CAD unit we made a Skateboard in onshape.
+        </p>
+        
+        <h2>The Deck</h2>
+        
+        <p>
+          I started out by making a fully constrained sketch using the center rectangle and circle tools. Then I extruded my sketch, put bolt holes in the board to mount the trucks and filleted the boards edge.
+        </p>
+        
+        <h2>The Trucks</h2>
+
+        <p> Making the trucks was very interesting to me because we made parts in the air before connecting them. 
+          One thing I learned is that you can use a sketch after you made it by using the use tool, this is very helpful because you don't need to remake constraints that you made before. I also helped Yannick with an issue where his sketch got constrained wrong because of one miss click and he got stuck.  </p>
+      
+        <h2>Wheels and Bearings</h2>
+
+        <p>The wheels and bearings were pretty simple, I revolved a sketch for the polyurethane part of the wheel and then made a bearing inside of the wheel using some of the dimensions with the use tool.</p>
+      
+        <h2>Assembly</h2>
+
+        <p>I added bearings to both sides of the wheel then used a cool tool to combine everything. Its called replicate and it helps with repetitve assembly so thaat you dont have to go through all of the assembly steps every time.</p>
+        </section>
+      
+      <canvas id = "bg" ></canvas>   
+    </main>
+    
+    <script>
+      // NavBar Hiding
+      {
+        const nav = document.querySelector(".nav")
+        let lastScrollY = window.scrollY;
+
+          window.addEventListener("scroll", () => {
+            if (lastScrollY < window.scrollY) {
+              nav.classList.add("nav--hidden");
+            }
+            else {
+              nav.classList.remove("nav--hidden");
+            }
+            lastScrollY = window.scrollY
+          });
+      }
+    </script>
+
+  </body>
+
+</html>
