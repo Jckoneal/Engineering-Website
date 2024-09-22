@@ -29,7 +29,7 @@ main {
   position: absolute;
   width: 100%;
   margin: 0px auto;
-  padding: 120px 0px;
+  padding: 140px 0px;
   background: transparent;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
