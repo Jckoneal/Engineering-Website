@@ -1,3 +1,12 @@
+@font-face {
+  font-family: SFcompact;
+  src: url("/Fonts/SF-Compact-Display-Medium.otf") format("opentype");
+
+}
+@font-face {
+  font-family: SFcompactLight;
+  src: url("/Fonts/SF-Compact-Display-Regular.otf") format("opentype");
+}
 canvas {
   position: fixed;
   top: 0;
@@ -11,14 +20,14 @@ body {
 :root {
   --dark-bg: rgba(15, 15, 15, 0.95);
   --spacing: 250px;
-
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: SFcompactLight ,sans-serif;
   font-weight: 400;
   font-style: compact;
-
   overflow-x: hidden;
 }
-
+b {
+  font-family: SFCompact, sans-serif;
+}
 
 main {
   width: 100vw;
@@ -34,7 +43,7 @@ main {
 }
 
 h1, h2, h3, blockquote {
-  font-family: -apple-system, BlinkMacSystemFont;
+  font-family: SFCompact, sans-serif;
   font-weight: 700;
   font-style: compact;
 }
