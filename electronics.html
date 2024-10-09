@@ -56,9 +56,18 @@
         
         <h2>Night Light Circuit</h2>
 
-        <p> Making the trucks was very interesting to me because we made parts in the air before connecting them. 
-          One thing I learned is that you can use a sketch after you made it by using the use tool, this is very helpful because you don't need to remake constraints that you made before. I also helped Yannick with an issue where his sketch got constrained wrong because of one miss click and he got stuck.  </p>
-      
+        <p> 
+            The nightlight circuit uses a photoresistor and a 3906 PNP transistor to control an LED based on ambient light levels. The circuit is powered by a 9V supply, with the positive terminal connected to one side of the photoresistor. The photoresistor changes resistance depending on the amount of light: low resistance in bright light and high resistance in darkness.
+        </p>
+        <p>
+            The photoresistor is connected to the collector of the 3906 transistor, which acts as a switch. The base of the transistor is connected through a 100kΩ resistor, which controls the base current. The emitter of the transistor is connected to the LED circuit, which includes a 100Ω current-limiting resistor connected to ground. The resistor makes sure that the led doesn’t draw too much current and explode. 
+        </p>
+        <p>
+            When the light level is low, the increased resistance of the photoresistor allows enough current to reach the base of the transistor, turning it on. Once on, current flows from the collector to the emitter, lighting up the LED. When the photoresistor detects enough light, its resistance drops, reducing the base current and turning the transistor off, which keeps the LED off.
+        </p>
+        <p>
+            The color-coded voltage levels in the wiring diagram illustrate how the voltage changes across the circuit under different lighting conditions, demonstrating how the transistor controls the LED.
+        </p>
         <h2>LED Flasher Circuit</h2>
 
         <p>
@@ -71,16 +80,20 @@
             The LED flasher circuit works by using the 555 timer in a mode where it continuously switches on and off. The timer sends a high signal to turn the LED on and a low signal to turn it off. This on-off cycle repeats at a rate determined by the resistors and capacitor in the circuit. When the timer’s output goes high, the LED lights up, and when the output goes low, the LED turns off. This creates the flashing effect, with the timing controlled by how the capacitor charges and discharges through the resistors.
         </p>
 
-        <h2>Arduino</h2>
+        <!-- <h2>Arduino</h2>
 
         <p>I added bearings to both sides of the wheel then used a cool tool to combine everything. Its called replicate and it helps with repetitve assembly so that you dont have to go through all of the assembly steps every time.</p>
         <h2>Shift Registers</h2>
 
-        <p>hello</p>
+        <p>hello</p> -->
         </section>
+        <div class = "images">
+            <img src="/electronics/parallelCircuit.jpg" alt = ParallelCircuit>
+            
+            <img src="/electronics/NightLightSchematic.png" alt = nightlight>
 
-        <img src="/electronics/Electronics555.jpg" alt = timer>
-      
+            <img src="/electronics/Electronics555.jpg" alt = timer>
+        </div>
       <canvas id = "bg" ></canvas>   
     </main>
     
