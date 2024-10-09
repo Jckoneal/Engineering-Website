@@ -2,20 +2,7 @@ import './style.css';
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
-import { defineConfig } from 'vite';
 
-export default defineConfig({
-build: {
-rollupOptions: {
-input: {
-home: '/index.html',
-electronics: '/electronics.html',
-about: "about.html",
-
-},
-},
-},
-});
 
 const scene = new THREE.Scene();
 const loader = new GLTFLoader();
