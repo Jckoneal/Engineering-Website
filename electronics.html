@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/style.css"> 
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/JackLogo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jack O'Neal | Engineering Portfolio</title>
+
+  </head>
+  <body>
+    <nav class="nav">
+        <u1>
+          <li><a href = "/#h" class="nav__link" >Home</a></li>
+          <li><a href = "/#CAD" class="nav__link">CAD</a></li>
+          <li><a href = "/electronics.html" class="nav__link">Electronics</a></li>
+          <!-- <li><a href = "#" class="nav__link">Coding</a></li> -->
+          <!-- <li><a href = "#" class="nav__link">Projects</a></li> -->
+          <li><a href = "/about.html" class="nav__link">About</a></li>
+        </u1>
+    </nav>
+    
+    <main id = "electronicsHeader">
+      
+      <header>
+        <h1>Electronics</h1>
+        <p>Building Circuits</p>
+      </header>
+      
+      <section class= "electronics" >
+        <br>
+        <h2>Series Circuit</h2>
+
+        <p>
+            We started by building simple circuits to get a better understanding of how electricity works, 
+            like how voltage drop affects the flow.
+             I put together a series circuit and learned that while I couldn’t measure the current (amps) directly across an LED due to its low resistance, 
+             I could still figure out the current flowing through the whole circuit. 
+             To do that, I used Ohm's law.
+             By measuring the resistor in the circuit with a multimeter, I found the resistance and the voltage drop across it, 
+             which allowed me to calculate the current. 
+             Since the current stays the same throughout a series circuit, the current across the LED is the same as the resistor. 
+        </p>
+        
+        <h2>Parallel Circuit</h2>
+        
+        <p>
+          For this project, I built a parallel circuit that had two branches, each consisting of a resistor and an LED in series. This setup helped me understand how current behaves in parallel circuits.
+        </p>
+        <p>
+        In a parallel circuit, each branch has its own current path. To measure the current through each branch, I measured the resistance and voltage drop across each resistor. Using Ohm's law (again), I could determine the current through each resistor. Since each resistor was in series with an LED, this also gave me the current flowing through the respective LED.
+        </p>
+        <p>
+        The total current draw of the circuit is simply the sum of the currents from each of the parallel branches. By understanding the current flow through each component, I was able to see how the total current in a parallel circuit is distributed across the different paths.
+        </p>
+        
+        <h2>Night Light Circuit</h2>
+
+        <p> Making the trucks was very interesting to me because we made parts in the air before connecting them. 
+          One thing I learned is that you can use a sketch after you made it by using the use tool, this is very helpful because you don't need to remake constraints that you made before. I also helped Yannick with an issue where his sketch got constrained wrong because of one miss click and he got stuck.  </p>
+      
+        <h2>LED Flasher Circuit</h2>
+
+        <p>
+            I built an LED flasher circuit using a 555 timer IC to create a continuous on-off cycle for the LED. The timer switches between high and low output, controlling when the LED flashes. 
+        </p>
+        <p>
+            I used the 555 timer along with resistors and a capacitor to control the LED. The circuit is wired with the 555 timer in astable mode, meaning it continuously toggles between high and low output states. Pin 8 is connected to the positive supply voltage, while pin 1 is grounded. Pins 4 and 8 are also tied to the positive supply to reset the timer. A resistor is connected between pins 7 (discharge) and 8, and another resistor is placed between pins 7 and 6 (threshold), with a capacitor connected from pin 6 to ground to set the timing. Pin 3, the output, is connected to the LED, with the LED grounded through a resistor.
+        </p>
+        <p>
+            The LED flasher circuit works by using the 555 timer in a mode where it continuously switches on and off. The timer sends a high signal to turn the LED on and a low signal to turn it off. This on-off cycle repeats at a rate determined by the resistors and capacitor in the circuit. When the timer’s output goes high, the LED lights up, and when the output goes low, the LED turns off. This creates the flashing effect, with the timing controlled by how the capacitor charges and discharges through the resistors.
+        </p>
+
+        <h2>Arduino</h2>
+
+        <p>I added bearings to both sides of the wheel then used a cool tool to combine everything. Its called replicate and it helps with repetitve assembly so that you dont have to go through all of the assembly steps every time.</p>
+        <h2>Shift Registers</h2>
+
+        <p>hello</p>
+        </section>
+
+        <img src="/electronics/Electronics555.jpg" alt = timer>
+      
+      <canvas id = "bg" ></canvas>   
+    </main>
+    
+    <script type="module" src="/electronics.js"></script>
+    <script>
+      // NavBar Hiding
+      {
+        const nav = document.querySelector(".nav")
+        let lastScrollY = window.scrollY;
+
+          window.addEventListener("scroll", () => {
+            if (lastScrollY < window.scrollY) {
+              nav.classList.add("nav--hidden");
+            }
+            else {
+              nav.classList.remove("nav--hidden");
+            }
+            lastScrollY = window.scrollY
+          });
+      }
+    </script>
+
+  </body>
+
+</html>

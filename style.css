@@ -33,11 +33,13 @@ main {
   grid-template-columns: repeat(12, 1fr);
 }
 
+
 h1, h2, h3, blockquote {
   font-family: -apple-system, BlinkMacSystemFont;
   font-weight: 700;
   font-style: compact;
 }
+
 
 canvas {
   position: fixed;
@@ -47,24 +49,35 @@ canvas {
 
 
 
-  header {
-    margin-top: 10%;
-    grid-column: 2 / span 6;
-    font-size: 2.5rem;
-    padding: 2rem;
-    margin-bottom: 20%;
-  }
+header {
+  margin-top: 0;
+  grid-column: 2 / span 6;
+  font-size: 2.5rem;
+  padding: 2rem;
+  margin-bottom: 20%;
+}
 
-  section {
-    grid-column: 2 / 7;
-    padding: 1rem;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    margin-bottom: var(--spacing);
-  }
+section {
+  grid-column: 2 / 7;
+  padding: 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin-bottom: var(--spacing);
+}
 
-  blockquote {
-    margin: 0;
+.electronics {
+  width: 90%; /* Make the container wider */
+  margin: 0 auto; /* Center it on the screen */
+  grid-column: 2 / 8;
+}
+img {
+  width: 90%;
+  margin-top: 20%;
+  margin-left: 15%;
+  grid-column: 8/12;
+}
+blockquote {
+  margin: 0;
     padding: 0;
     grid-column: 2 / span 9;
     margin-bottom: var(--spacing);
