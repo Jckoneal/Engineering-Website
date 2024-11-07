@@ -40,7 +40,7 @@ jobs:
       - run: npx vite build
 
       - name: Upload build files
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build
           path: dist # Ensure this matches the actual build output directory
@@ -61,7 +61,7 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload to GitHub Pages
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: dist # Ensure this matches the build output directory
       - name: Deploy to GitHub Pages
